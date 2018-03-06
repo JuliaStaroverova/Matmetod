@@ -53,6 +53,49 @@ cumsum(1:10)
 dna2=sample(c("A","T","G","G","G","C"), size=3826513,replace=TRUE)
 ratio=summary(factor(dna2))/length(dna2)
 ratio
+# Создание длинной последовательности с заданными пропорциями элементов
 dna2=sample(c("A","T","G","C"), size=3826513,prob=c(.5/3,.5/3,.5,.5/3),replace=TRUE)
 ratio=summary(factor(dna2))/length(dna2)
 ratio
+##Таблицы
+iris[iris$Species==c("setosa","virginica"),]
+iris[iris$Species=="setosa" | iris$Species=="virginica",c("Petal.Length","Species")]
+##Основные типы структур данных
+# 1. vector	c()	i-position or logic
+# 2. Factor	factor()	[] - position or logic
+# 3. Matrix	matrix()	row,col;i- positional logical
+# 4. List	list()	], $ \[i
+# 5. dataframe	data.frame() $	,
+# синтаксис и назночение каждой функции можно проверить через?функция
+summary(factor(iris[(iris$Petal.Length>2 & iris$Petal.Length<6),"Species" ]))
+y_func = function(p) 
+{
+  x=p^2
+  y=x^3
+  print("result")
+  return(c(x,y))
+  
+}
+my_func(2)
+mathses = function(p,q)
+{
+  result = c(p+q,log(p+q,10),exp(p+q))
+  names(result) = c("summ", "log","exp")
+  return(result)
+}
+mathses(2,3)
+# Проверки условий
+mf = function(p)
+{
+  
+  if (p>0)
+  {
+    x=log(p)
+    return(x)
+  }
+  else
+  {
+    return(NULL)      
+  }
+}
+mf(-1)

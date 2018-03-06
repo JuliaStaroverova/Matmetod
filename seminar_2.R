@@ -99,3 +99,34 @@ mf = function(p)
   }
 }
 mf(-1)
+# gamma(x) gives !(x-1), we need to make function which makes true factorial нам нужно сделать функцию, которая делает истинное факториал
+myfactorial = function(p) 
+{
+  if (p>0 & p%%1==0)
+  {return(gamma(p+1))}
+  else
+  {return(NULL)}
+}
+
+myfactorial(5)
+myfactorial = function(p) 
+{
+  if (p>0 & p%%1==0)
+  {return(gamma(p+1))}
+  else
+  {return(NULL)}
+}
+
+mydistribution = function(x,p)
+{
+  if ( x>=0 & x%%1==0 & p<=1 & p>0 )
+  {
+    return(p*(1-p)^x)        
+  }
+  else
+  {
+    return(0)
+  }
+  
+}
+mydistribution(3,.4)

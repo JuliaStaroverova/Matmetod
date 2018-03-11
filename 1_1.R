@@ -15,6 +15,5 @@ d=iris[iris$Species=="setosa" | iris$Species=="virginica",c("Petal.Width")]
   #D
 x=c(A,B,C,D)
 names(x)<-c("Sepal.Length", "Sepal.Width",  "Petal.Length", "Petal.Width")
-sort(x)
 list(sort(x))
 

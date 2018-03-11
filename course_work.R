@@ -5,8 +5,9 @@ setwd("C:/rdata")
 adat=read.csv("filename.csv", header=TRUE, sep=";", dec=",")# нет данных- нет файла
 fit <- lm(data$ROSN ~ data$BRN )
 summary(fit)
-model <- lm(data$y~data$x)
+#model <- lm(data$y~data$x)
 plot(fit)
+
 
 
 #abline(model)

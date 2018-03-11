@@ -11,8 +11,6 @@ plot(fit)
 
 
 #abline(model)
-
-
 # fit model
 #fit <- lm(Employed~., longley)
 # summarize the fit

@@ -1,23 +1,21 @@
 #Линейная регрессия (Linear regression) — используемая в статистике регрессионная модель зависимости одной (объясняемой, зависимой) переменной y от другой или нескольких других переменных факторов, регрессоров, независимых переменных) x с линейной функцией зависимости.
 rm(list=ls())
-data(longley)
-setwd("C:/rdata")
-adat=read.csv("filename.csv", header=TRUE, sep=";", dec=",")# нет данных- нет файла
-fit <- lm(data$ROSN ~ data$BRN )
+setwd("C:/rdata/Group_124/JuliaStar/Matmetod")
+adat=read.csv("eddypro.csv", header=TRUE, sep=";", dec=",")
+#names(adat)
+str(adat)
+adat[adat == -9999] = NA
+#adat
+#fit <- lm(adat$co2_flux ~ adat$klock )
+#summary(fit)
+#plot(fit)
+#отборка по времени
+  tabfinal1 <- adat[adat$klock <= 16, ]
+  tabfinal1$klock
+  tabfinal<-tabfinal1[tabfinal1$klock > 12,]
+  tabfinal$klock
+#построение модели
+fit<-lm(tabfinal$co2_flux~tabfinal$klock)
 summary(fit)
-#model <- lm(data$y~data$x)
 plot(fit)
 
-
-
-#abline(model)
-# fit model
-#fit <- lm(Employed~., longley)
-# summarize the fit
-#summary(fit)
-# make predictions
-#predictions <- predict(fit, longley)
-# summarize accuracy
-#rmse <- mean((longley$Employed - predictions)^2)
-#print(rmse)
-#plot(fit)

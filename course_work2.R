@@ -10,6 +10,7 @@ library("stringr")
 library("tibble")
 library("readr") 
 library("ggplot2")
+library("car")
 # читаем файл, вносим изменения
 data= read_csv("eddypro.csv", skip = 1, na =c("","NA","-9999","-9999.0"), comment=c("["))
 # удаляем первую строку
@@ -74,5 +75,26 @@ fit = lm(co2_flux ~ Tau + rand_err_Tau + H + rand_err_H + LE + qc_LE +
                 v_var + w_var + h2o_var + w_div_ts_cov + w_div_co2_cov + 
                 w_div_h2o_cov + flowrate, data = teaching_data_unq)
 summary(fit)
-plot(fit)
+
+#взаимодействие второго порядка
+fit1= lm(co2_flux ~ (Tau + rand_err_Tau + H + rand_err_H + LE + qc_LE + 
+           rand_err_LE + h2o_flux + qc_h2o_flux + rand_err_h2o_flux + 
+           h2o_time_lag + sonic_temperature + air_temperature + air_density + 
+           air_molar_volume + es + RH + VPD + u_star_ + TKE + T_star_ + 
+           un_Tau + un_H + un_LE + un_co2_flux + un_h2o_flux + u_var + 
+           v_var + w_var + h2o_var + w_div_ts_cov + w_div_co2_cov + 
+           w_div_h2o_cov + flowrate)^2, data = teaching_data_unq)
+summary(fit1)
+#удаляем переменные и взаимодействия которые не значимы
+fit2= lm(co2_flux ~ (Tau + rand_err_Tau + H + rand_err_H + LE + qc_LE + 
+                       rand_err_LE + h2o_flux + qc_h2o_flux + rand_err_h2o_flux + 
+                       h2o_time_lag + sonic_temperature + air_temperature + air_density + 
+                       air_molar_volume + es + RH + VPD + u_star_ + TKE + T_star_ + 
+                       un_Tau + un_H + un_LE + un_co2_flux + un_h2o_flux + u_var + 
+                       v_var + w_var + h2o_var + w_div_ts_cov + w_div_co2_cov + 
+                       w_div_h2o_cov + flowrate)^2-
+                      ( Tau + rand_err_Tau + H + rand_err_H + LE + qc_LE + 
+                       rand_err_LE + h2o_flux ), data = teaching_data_unq)
+summary(fit2)
+plot(fit2)
 

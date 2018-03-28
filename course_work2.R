@@ -74,7 +74,7 @@ fit = lm(co2_flux ~ Tau + rand_err_Tau + H + rand_err_H + LE + qc_LE +
                 un_Tau + un_H + un_LE + un_co2_flux + un_h2o_flux + u_var + 
                 v_var + w_var + h2o_var + w_div_ts_cov + w_div_co2_cov + 
                 w_div_h2o_cov + flowrate, data = teaching_data_unq)
-summary(fit)
+anova(fit)
 
 #взаимодействие второго порядка
 fit1= lm(co2_flux ~ (Tau + rand_err_Tau + H + rand_err_H + LE + qc_LE + 
@@ -84,7 +84,7 @@ fit1= lm(co2_flux ~ (Tau + rand_err_Tau + H + rand_err_H + LE + qc_LE +
            un_Tau + un_H + un_LE + un_co2_flux + un_h2o_flux + u_var + 
            v_var + w_var + h2o_var + w_div_ts_cov + w_div_co2_cov + 
            w_div_h2o_cov + flowrate)^2, data = teaching_data_unq)
-summary(fit1)
+anova(fit1)
 #удаляем переменные и взаимодействия которые не значимы
 fit2= lm(co2_flux ~ (Tau + rand_err_Tau + H + rand_err_H + LE + qc_LE + 
                        rand_err_LE + h2o_flux + qc_h2o_flux + rand_err_h2o_flux + 
@@ -95,6 +95,6 @@ fit2= lm(co2_flux ~ (Tau + rand_err_Tau + H + rand_err_H + LE + qc_LE +
                        w_div_h2o_cov + flowrate)^2-
                       ( Tau + rand_err_Tau + H + rand_err_H + LE + qc_LE + 
                        rand_err_LE + h2o_flux ), data = teaching_data_unq)
-summary(fit2)
+anova(fit2)
 plot(fit2)
 
